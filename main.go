@@ -2,7 +2,6 @@ package main
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -41,12 +40,7 @@ func handleLanding(w http.ResponseWriter, r *http.Request) {
 	}
 
 	empty := forms{}
-	j, err := json.Marshal(empty)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
-
-	if err = sse.PatchSignals(j); err != nil {
+	if err := sse.MarshalAndPatchSignals(empty); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }

@@ -1,0 +1,12 @@
+{{ block "index.html" .}}
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <title>Test</title>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/starfederation/datastar@main/bundles/datastar.js"></script>
+  </head>
+  <body>
+  <div id="main-content" data-on-load="@get('/landing')"></div>
+  </body>
+  </html>
+{{ end }}
